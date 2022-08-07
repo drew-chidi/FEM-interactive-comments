@@ -1,0 +1,56 @@
+.headerContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+}
+.avatarContainer {
+  width: 30px;
+}
+.avatar {
+}
+.username {
+}
+.username {
+  font-weight: 800;
+  font-size: 1.125rem;
+}
+
+.commentBody {
+  color: gray;
+}
+
+.commentFooter {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+  /* margin-bottom: 12px; */
+}
+
+.commentFooter > * {
+  width: 30%;
+}
+
+.replyGroup {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.replyGroup > * {
+  margin-left: 10px;
+  background-color: white;
+}
+
+.replyBox {
+  border-left: solid 1px rgb(224, 216, 216);
+  padding: 0 0 0 12px;
+  margin: auto auto 12px auto;
+}
+.counter {
+  margin-top: 14px;
+}
+
+.mainContainer {
+  margin: 14px 0;
+}

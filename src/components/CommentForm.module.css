@@ -1,0 +1,23 @@
+.inputBox .textArea {
+  width: 100%;
+}
+
+.buttonAvatar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonAvatar button {
+  background-color: transparent;
+}
+
+.userAvatar {
+  width: 30px;
+}
+
+.button {
+  background: rgb(81, 81, 166);
+  color: white;
+  padding: 10px 22px;
+  border-radius: 8px;
+}

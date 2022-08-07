@@ -1,0 +1,16 @@
+.countContainer {
+  border-radius: 10px;
+  display: flex;
+  font-weight: 800;
+  justify-content: space-around;
+  background-color: hsl(223, 19%, 93%);
+  padding: 8px 0;
+}
+.addCount,
+.minusCount {
+  background-color: transparent;
+}
+button {
+  display: inline-flex;
+  align-items: center;
+}

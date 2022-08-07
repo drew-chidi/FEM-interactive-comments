@@ -1,0 +1,18 @@
+import React from "react";
+
+const GetData = () => {
+  return fetch("data.json", {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (myJson) {
+      return myJson;
+    });
+};
+
+export default GetData;
