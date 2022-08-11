@@ -19,12 +19,18 @@ const Comment = ({ data }) => {
           ))}
         </div>
       ))} */}
-      {ctx.comments?.map((item) => (
-        <div key={item.id}>
-          <List list={item} parentId={item.id} />
+      {ctx.comments?.map((comment) => (
+        <div key={comment.id}>
+          <List list={comment} parentId={comment.id} id='comment' />
           <div className={classes.replyBox}>
-            {item.replies.map((reply) => (
-              <List list={reply} parentId={item.id} key={reply.id} />
+            {comment.replies.map((reply) => (
+              <List
+                list={reply}
+                parentId={comment.id}
+                key={reply.id}
+                replyId={reply.id}
+                name='reply'
+              />
             ))}
           </div>
         </div>

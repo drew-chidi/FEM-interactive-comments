@@ -27,9 +27,12 @@
   /* margin-bottom: 12px; */
 }
 
-.commentFooter > * {
+.commentFooter .counter {
   width: 30%;
 }
+/* .commentFooter > * {
+  width: 30%;
+} */
 
 .replyGroup {
   display: flex;
@@ -53,4 +56,37 @@
 
 .mainContainer {
   margin: 14px 0;
+}
+.userButtonGroup {
+  display: flex;
+  /* flex-basis: 50%;
+  min-width: 50%; */
+}
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 14px;
+  }
+  .headerMain {
+    flex-basis: 1;
+    max-width: 90%;
+  }
+  .counter {
+    width: auto;
+    margin-top: 0;
+  }
+  .commentFooter {
+    flex-basis: auto;
+  }
+  .userButtonGroup,
+  .replyGroup2 {
+    position: absolute;
+    right: 4%;
+    width: max-content;
+    min-width: 0;
+  }
+  .replyGroup {
+  }
 }

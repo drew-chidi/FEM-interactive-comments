@@ -30,6 +30,31 @@ const commentReducer = (state, action) => {
         comments: newComments,
       };
     }
+    case "DELETE": {
+      let newComments = state.comments.filter((item) => item.id !== action.id);
+      return {
+        currentUser: state.currentUser,
+        comments: newComments,
+      };
+    }
+    case "DELETEREPLY": {
+      let parentId = action.parentId;
+      let id = action.id;
+      let indexOfReply;
+      console.log("ContextDelete1", parentId);
+      let newComments = state.comments.map((comment) => {
+        if (comment.id === parentId) {
+          indexOfReply = comment.replies.findIndex((item) => item.id === id);
+          comment.replies.splice(indexOfReply, 1);
+        }
+        return comment;
+      });
+      console.log(newComments);
+      return {
+        currentUser: state.currentUser,
+        comments: newComments,
+      };
+    }
     default: {
       // console.log(action);
       // throw Error("Unknown action: " + action.type);
@@ -42,8 +67,7 @@ const CommentProvider = (props) => {
     commentReducer,
     defaultCommentState
   );
-  const [parentId, setParentId] = useState(null);
-  // console.log("CommentProvider", parentId);
+  // const [parentId, setParentId] = useState(null);
 
   const addCommentHandler = (text) => {
     commentAction({ type: "COMMENT", item: text });
@@ -51,29 +75,33 @@ const CommentProvider = (props) => {
   const addReplyHandler = (item, parentId) => {
     commentAction({ type: "REPLY", item: item, parentId: parentId });
   };
-  const deleteCommentHandler = (id) => {
-    commentAction({ type: "DELETE", id: id });
+  const deleteCommentHandler = (parentId) => {
+    commentAction({ type: "DELETE", id: parentId });
   };
-  const deleteReplyHandler = (id) => {
-    commentAction({ type: "DELETEREPLY", id: id });
+  const deleteReplyHandler = (parentId, replyId) => {
+    commentAction({ type: "DELETEREPLY", id: replyId, parentId: parentId });
+    console.log("Id", replyId);
   };
+  // console.log("parentId", parentId);
+
   const editReplyHandler = (id, item) => {
     commentAction({ type: "EDITREPLY", id: id, item: item });
   };
-  const updateParentId = (item) => {
-    if (parentId !== undefined || parentId !== null) {
-      setParentId(item);
-    }
-  };
+  // const updateParentId = (item) => {
+  //   if (parentId !== undefined || parentId !== null) {
+  //     setParentId(item);
+  //   }
+  // };
 
   const commentContext = {
     currentUser: commentState.currentUser,
     comments: commentState.comments,
-    parentId: parentId,
-    updateParentId,
+    // parentId: parentId,
+    // updateParentId,
     addComment: addCommentHandler,
     addReply: addReplyHandler,
-    deleteComment: (id) => {},
+    deleteComment: deleteCommentHandler,
+    deleteReply: deleteReplyHandler,
     editComment: () => {},
     increaseCount: () => {},
     decreaseCount: () => {},

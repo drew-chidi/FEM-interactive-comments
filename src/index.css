@@ -1,8 +1,11 @@
-html {
+/* html {
   background-color: hsl(223, 19%, 93%);
-}
+} */
 * {
   box-sizing: border-box;
+}
+body {
+  background: hsl(228, 33%, 97%) !important;
 }
 
 img {
@@ -133,4 +136,10 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+/* Modal Styles */
+.css-hxtskf {
+  margin-left: 18px;
+  margin-right: 18px;
 }

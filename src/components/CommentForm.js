@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
-import Card from "../UI/Card";
+import Card from "./UI/Card";
 import { v4 as uuidv4 } from "uuid";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en.json";
+import TimeAgo from "timeago-react";
 import classes from "./CommentForm.module.css";
 import CommentContext from "../store/comment-context";
 
-TimeAgo.addDefaultLocale(en);
+// TimeAgo.addDefaultLocale(en);
 
 const CommentForm = ({ parentId, ...props }) => {
   const [text, setText] = useState("");
@@ -17,8 +16,8 @@ const CommentForm = ({ parentId, ...props }) => {
   const commentData = {
     id: uuidv4(),
     content: text,
-    // createdAt: <ReactTimeAgo date=,
-    createdAt: "1 month ago",
+    createdAt: <TimeAgo date={new Date()} />,
+    // createdAt: "1 month ago",
     score: 12,
     user: {
       image: ctx.currentUser.image,
@@ -30,10 +29,10 @@ const CommentForm = ({ parentId, ...props }) => {
   const replyData = {
     id: uuidv4(),
     content: text,
-    createdAt: "1 month ago",
+    createdAt: <TimeAgo date={new Date()} />,
     score: 0,
     user: {
-      image: image,
+      image: ctx.currentUser.image,
       username: username,
     },
   };
@@ -41,11 +40,9 @@ const CommentForm = ({ parentId, ...props }) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (props.submitLabel === "SEND") {
-      // props.onSubmit(text);
-      // setText("");
-      // return;
       ctx.addComment(commentData);
       setText("");
+      window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     } else {
       ctx.addReply(replyData, parentId);
@@ -55,7 +52,7 @@ const CommentForm = ({ parentId, ...props }) => {
 
   return (
     <Card>
-      <form onSubmit={onSubmitHandler}>
+      <form onSubmit={onSubmitHandler} className={classes.container}>
         <div className={classes.inputBox}>
           <textarea
             className={classes.textArea}

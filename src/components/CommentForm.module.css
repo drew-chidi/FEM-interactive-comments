@@ -1,5 +1,11 @@
 .inputBox .textArea {
   width: 100%;
+  border: 1px solid rgb(214, 208, 208);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  padding: 10px 20px;
+}
+.textArea:active {
 }
 
 .buttonAvatar {
@@ -20,4 +26,26 @@
   color: white;
   padding: 10px 22px;
   border-radius: 8px;
+}
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 14px;
+  }
+  .userAvatar {
+    width: 40px;
+  }
+  .inputBox {
+    width: 90%;
+  }
+  .textArea {
+    flex-basis: 80%;
+    max-width: 80%;
+  }
+  .button {
+    position: absolute;
+    right: 4%;
+  }
 }

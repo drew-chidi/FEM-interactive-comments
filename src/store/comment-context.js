@@ -8,6 +8,7 @@ const CommentContext = React.createContext({
   updateParentId: (id) => {},
   addComment: (item) => {},
   deleteComment: (id) => {},
+  deleteReply: (parentId, replyId) => {},
   editComment: () => {},
   increaseCount: () => {},
   decreaseCount: () => {},

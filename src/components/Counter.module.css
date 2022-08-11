@@ -14,3 +14,16 @@ button {
   display: inline-flex;
   align-items: center;
 }
+@media (min-width: 768px) {
+  .countContainer {
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+  }
+  .addCount,
+  .minusCount,
+  .count {
+    display: inline;
+    margin: 4px;
+  }
+}
