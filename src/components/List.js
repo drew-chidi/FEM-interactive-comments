@@ -39,7 +39,7 @@ const List = ({ list, replyId, parentId, name }) => {
     setOpenReplyForm((current) => !current);
   };
 
-  console.log(isOpen);
+  const editHandler = () => {};
 
   return (
     <div>
@@ -58,6 +58,21 @@ const List = ({ list, replyId, parentId, name }) => {
                   <h1 className={classes.username}>{list.user.username}</h1>
                 )}
               </div>
+              {username === "juliusomo" && (
+                <p
+                  style={{
+                    background: "hsl(238, 40%, 52%)",
+                    color: "white",
+                    padding: "0 6px",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    fontSize: "12px",
+                    borderRadius: "4px",
+                  }}
+                >
+                  you
+                </p>
+              )}
               <div className={classes.timeInfo}>
                 <p className={classes.time}>{list.createdAt}</p>
               </div>
@@ -86,14 +101,14 @@ const List = ({ list, replyId, parentId, name }) => {
                   <span className={classes.reply}>
                     <DeleteIcon />
                   </span>
-                  <button className={classes.replyButton}>Delete</button>
+                  <button className={classes.deleteButton}>Delete</button>
                 </div>
-                <div className={classes.replyGroup} onClick={replyFormHandler}>
+                {/* <div className={classes.replyGroup} onClick={editHandler}>
                   <span className={classes.reply}>
                     <EditIcon />
                   </span>
                   <button className={classes.replyButton}>Edit</button>
-                </div>
+                </div> */}
               </div>
             )}
           </footer>

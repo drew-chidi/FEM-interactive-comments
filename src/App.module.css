@@ -1,3 +1,9 @@
 .appContainer {
   padding: 25px 15px;
 }
+@media (min-width: 768px) {
+  .appContainer {
+    width: 730px;
+    margin: auto;
+  }
+}

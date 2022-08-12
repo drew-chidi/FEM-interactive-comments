@@ -100,15 +100,14 @@ Use this section to outline areas that you want to continue focusing on in futur
 ### Useful resources
 
 - [How to Generate Unique ID in JavaScript](https://dev.to/rahmanfadhil/how-to-generate-unique-id-in-javascript-1b13) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [React Props Cheatsheet](https://www.freecodecamp.org/news/react-props-cheatsheet/) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [React Props Cheatsheet](https://www.freecodecamp.org/news/react-props-cheatsheet/) - This is an amazing article for quick reference.
+- [Using Custom Variables with CSS Modules](https://www.youtube.com/watch?v=B0znL5BNFHY) - A short youtube video to show how to use custom CSS.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
+- Website - [Interactive Comment Section](https://interactive-comments-fem.netlify.app/)
 - Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Twitter - [@first_name_gr8](https://www.twitter.com/first_name_gr8)
 
 **Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 

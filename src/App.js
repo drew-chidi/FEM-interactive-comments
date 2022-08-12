@@ -8,9 +8,9 @@ function App() {
   return (
     <Fragment>
       <div className={classes.appContainer}>
-        <div>
+        <div className={classes.main}>
           <Comment />
-          <CommentReplies />
+          {/* <CommentReplies /> */}
         </div>
         <CommentForm submitLabel='SEND' />
       </div>

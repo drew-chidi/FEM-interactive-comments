@@ -1,11 +1,19 @@
-/* html {
-  background-color: hsl(223, 19%, 93%);
-} */
+/* Variables */
+:root {
+  --primary-blue: hsl(238, 40%, 52%);
+  --primary-red: hsl(358, 79%, 66%);
+  --active-blue: hsl(239, 57%, 85%);
+  --active-red: hsl(357, 100%, 86%);
+  --light-gray: hsl(223, 19%, 93%);
+  --very-light-gray: hsl(228, 33%, 97%);
+  --grayish-blue: hsl(211, 10%, 45%);
+  --dark-blue: hsl(212, 24%, 26%);
+}
 * {
   box-sizing: border-box;
 }
 body {
-  background: hsl(228, 33%, 97%) !important;
+  background: var(--very-light-gray) !important;
 }
 
 img {

@@ -5,20 +5,9 @@ import classes from "./Comment.module.css";
 
 const Comment = ({ data }) => {
   const ctx = useContext(CommentContext);
-  // console.log(ctx.comments);
-
-  // let parentId = ctx.comments.map((item) => item.id);
 
   return (
     <Fragment>
-      {/* {ctx.comments.map((item) => (
-        <div key={item.id}>
-          <List list={item} parentId={item.id} />
-          {item.replies.map((reply) => (
-            <CommentReplies reply={reply} key={reply.id} parentId={item.id} />
-          ))}
-        </div>
-      ))} */}
       {ctx.comments?.map((comment) => (
         <div key={comment.id}>
           <List list={comment} parentId={comment.id} id='comment' />
@@ -35,7 +24,6 @@ const Comment = ({ data }) => {
           </div>
         </div>
       ))}
-      {/* <List list={reply} parentId={item.id} /> */}
     </Fragment>
   );
 };

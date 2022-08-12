@@ -1,3 +1,6 @@
+/* @value colors: ".././colors.css";
+@value primary from colors; */
+
 .headerContainer {
   display: flex;
   justify-content: flex-start;
@@ -11,9 +14,19 @@
   font-weight: 800;
   font-size: 1.125rem;
 }
+.replyButton {
+  color: hsl(238, 40%, 52%);
+  /* color: hsl(239, 57%, 85%); */
+
+  font-weight: 700;
+}
+.deleteButton {
+  color: var(--primary-red);
+  font-weight: 700;
+}
 
 .commentBody {
-  color: gray;
+  color: var(--grayish-blue);
 }
 
 .commentFooter {
@@ -64,6 +77,7 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     padding: 14px;
+    position: relative;
   }
   .headerMain {
     flex-basis: 1;
