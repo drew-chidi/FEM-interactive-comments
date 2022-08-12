@@ -9,18 +9,15 @@ import {
 } from "@chakra-ui/react";
 
 const DeleteModal = ({ onShow, onHide, onDelete }) => {
-  // const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const deleteHandler = () => {
-    onDelete();
-  };
+  // const deleteHandler = () => {
+  //   onDelete();
+  // };
   return (
     <div>
       <Modal isOpen={onShow} onClose={onHide}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Delete comment</ModalHeader>
-          {/* <ModalCloseButton /> */}
           <ModalBody>
             Are you sure you want to delete this comment? This will remove the
             comment and can't be undone.

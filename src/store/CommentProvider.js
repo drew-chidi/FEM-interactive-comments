@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import CommentContext from "./comment-context";
 import data from "../data.json";
 

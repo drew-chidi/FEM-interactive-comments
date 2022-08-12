@@ -7,10 +7,6 @@
 .avatarContainer {
   width: 30px;
 }
-.avatar {
-}
-.username {
-}
 .username {
   font-weight: 800;
   font-size: 1.125rem;
@@ -71,7 +67,7 @@
   }
   .headerMain {
     flex-basis: 1;
-    max-width: 90%;
+    width: 90%;
   }
   .counter {
     width: auto;
@@ -86,7 +82,5 @@
     right: 4%;
     width: max-content;
     min-width: 0;
-  }
-  .replyGroup {
   }
 }

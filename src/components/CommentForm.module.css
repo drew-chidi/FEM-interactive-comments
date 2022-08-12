@@ -5,9 +5,6 @@
   margin-bottom: 12px;
   padding: 10px 20px;
 }
-.textArea:active {
-}
-
 .buttonAvatar {
   display: flex;
   justify-content: space-between;
