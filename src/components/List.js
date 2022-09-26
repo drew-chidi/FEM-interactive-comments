@@ -9,15 +9,16 @@ import { ReactComponent as DeleteIcon } from "../assets/icon-delete.svg";
 import DeleteModal from "./UI/DeleteModal";
 import { useDisclosure } from "@chakra-ui/react";
 import CommentContext from "../store/comment-context";
+import TextArea from "./TextArea";
 
 const List = ({ list, replyId, parentId, name }) => {
   const [openReplyForm, setOpenReplyForm] = useState(false);
+  const [editData, setEditData] = useState("");
+  const [editItem, setEditItem] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const ctx = useContext(CommentContext);
-
-  console.log("papps1", parentId);
-  console.log("papps2", replyId);
-  console.log("papps3", name);
+  const comments = ctx.comments;
 
   let image, username;
   if (list.user !== undefined) {
@@ -34,12 +35,40 @@ const List = ({ list, replyId, parentId, name }) => {
     onClose();
   };
 
+  let retrievedItemToEdit;
+
+  const editHandler = () => {
+    setIsEditing(true);
+    comments.find((item) => {
+      if (item.id === replyId) {
+        retrievedItemToEdit = item;
+        console.log("it is from here");
+      } else {
+        retrievedItemToEdit = item.replies.find((item) => item.id === replyId);
+      }
+      console.log("Withdraw", retrievedItemToEdit);
+      return retrievedItemToEdit;
+    });
+
+    if (!retrievedItemToEdit.replyingTo) {
+      setEditData(`${retrievedItemToEdit.content}`);
+    } else {
+      setEditData(
+        `@${retrievedItemToEdit.replyingTo} ${retrievedItemToEdit.content}`
+      );
+    }
+    setEditItem(retrievedItemToEdit);
+  };
+
+  // Set isEditing to False, to be called in a child component
+  const isEditingHandler = () => {
+    setIsEditing(false);
+  };
+
   // Shows and Hide the reply form under comments
   const replyFormHandler = () => {
     setOpenReplyForm((current) => !current);
   };
-
-  const editHandler = () => {};
 
   return (
     <div>
@@ -78,7 +107,19 @@ const List = ({ list, replyId, parentId, name }) => {
               </div>
             </header>
             <main className={classes.mainContainer}>
-              <p className={classes.commentBody}>{list.content}</p>
+              {/* Change this paragraph to an input element when edit button is clicked */}
+              {!isEditing && (
+                <p className={classes.commentBody}>{list.content}</p>
+              )}
+              {username === "juliusomo" && isEditing && (
+                <TextArea
+                  content={editData}
+                  id={replyId}
+                  submitLabel='UPDATE'
+                  retrievedItemToEdit={editItem}
+                  closeEditing={isEditingHandler}
+                />
+              )}
             </main>
           </div>
           <footer className={classes.commentFooter}>
@@ -103,12 +144,16 @@ const List = ({ list, replyId, parentId, name }) => {
                   </span>
                   <button className={classes.deleteButton}>Delete</button>
                 </div>
-                {/* <div className={classes.replyGroup} onClick={editHandler}>
-                  <span className={classes.reply}>
-                    <EditIcon />
-                  </span>
-                  <button className={classes.replyButton}>Edit</button>
-                </div> */}
+                {name === "reply" && (
+                  <div className={classes.replyGroup} onClick={editHandler}>
+                    <button className={classes.replyButton}>
+                      <span className={classes.reply}>
+                        <EditIcon />
+                      </span>
+                      Edit
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </footer>

@@ -16,8 +16,6 @@
 }
 .replyButton {
   color: hsl(238, 40%, 52%);
-  /* color: hsl(239, 57%, 85%); */
-
   font-weight: 700;
 }
 .deleteButton {

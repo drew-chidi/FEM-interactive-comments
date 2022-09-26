@@ -41,7 +41,6 @@ const commentReducer = (state, action) => {
       let parentId = action.parentId;
       let id = action.id;
       let indexOfReply;
-      console.log("ContextDelete1", parentId);
       let newComments = state.comments.map((comment) => {
         if (comment.id === parentId) {
           indexOfReply = comment.replies.findIndex((item) => item.id === id);
@@ -49,10 +48,31 @@ const commentReducer = (state, action) => {
         }
         return comment;
       });
-      console.log(newComments);
       return {
         currentUser: state.currentUser,
         comments: newComments,
+      };
+    }
+    case "EDIT": {
+      let id = action.item.id;
+      let oldContent;
+      let editedContent = action.item;
+      console.log("Edit Context", oldContent);
+      state.comments.find((item) => {
+        if (item.id === id) {
+          oldContent = item;
+          console.log("Edit", "it is in comments");
+        } else {
+          console.log("Edit", "it is in replies");
+
+          oldContent = item.replies.find((reply) => reply.id === id);
+        }
+        console.log("edited context", editedContent);
+        return oldContent;
+      });
+      return {
+        currentUser: state.currentUser,
+        comments: state.comments,
       };
     }
     default: {
@@ -67,7 +87,6 @@ const CommentProvider = (props) => {
     commentReducer,
     defaultCommentState
   );
-  // const [parentId, setParentId] = useState(null);
 
   const addCommentHandler = (text) => {
     commentAction({ type: "COMMENT", item: text });
@@ -82,10 +101,9 @@ const CommentProvider = (props) => {
     commentAction({ type: "DELETEREPLY", id: replyId, parentId: parentId });
     console.log("Id", replyId);
   };
-  // console.log("parentId", parentId);
 
-  const editReplyHandler = (id, item) => {
-    commentAction({ type: "EDITREPLY", id: id, item: item });
+  const editReplyHandler = (item) => {
+    commentAction({ type: "EDIT", item: item });
   };
   // const updateParentId = (item) => {
   //   if (parentId !== undefined || parentId !== null) {
@@ -102,7 +120,7 @@ const CommentProvider = (props) => {
     addReply: addReplyHandler,
     deleteComment: deleteCommentHandler,
     deleteReply: deleteReplyHandler,
-    editComment: () => {},
+    editComment: editReplyHandler,
     increaseCount: () => {},
     decreaseCount: () => {},
   };

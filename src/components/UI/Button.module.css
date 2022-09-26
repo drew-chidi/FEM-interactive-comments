@@ -1,0 +1,10 @@
+.container {
+  text-align: right;
+}
+.button {
+  color: white;
+  background: hsl(238, 40%, 52%);
+  color: white;
+  padding: 10px 22px;
+  border-radius: 8px;
+}

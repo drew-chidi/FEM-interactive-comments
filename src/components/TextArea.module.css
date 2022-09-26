@@ -1,0 +1,7 @@
+.textArea {
+  width: 100%;
+  outline: 1px solid rgb(117, 115, 115);
+  border-radius: 10px;
+  /* margin-bottom: 12px; */
+  padding: 10px 20px;
+}
