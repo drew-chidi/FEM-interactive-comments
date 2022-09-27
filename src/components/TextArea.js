@@ -6,9 +6,6 @@ import CommentContext from "../store/comment-context";
 const TextArea = ({ content, retrievedItemToEdit, ...props }) => {
   const [editValue, setEditValue] = useState(content);
   const ctx = useContext(CommentContext);
-
-  // console.log(retrievedItemToEdit);
-
   const editChangeHandler = (e) => {
     setEditValue(e.target.value);
   };
@@ -21,7 +18,6 @@ const TextArea = ({ content, retrievedItemToEdit, ...props }) => {
       formattedContent = editValue;
     }
     retrievedItemToEdit.content = formattedContent;
-    // console.log("wetin be this", retrievedItemToEdit);
     ctx.editComment(retrievedItemToEdit);
     props.closeEditing();
   };

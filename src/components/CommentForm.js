@@ -7,17 +7,33 @@ import CommentContext from "../store/comment-context";
 
 // TimeAgo.addDefaultLocale(en);
 
-const CommentForm = ({ parentId, ...props }) => {
+const CommentForm = ({ parentId, replyId, ...props }) => {
   const [text, setText] = useState("");
   const ctx = useContext(CommentContext);
   let image = ctx.currentUser.image.png;
   let username = ctx.currentUser.username;
 
+  console.log("replyingTo", replyId);
+  console.log("replyingTo", parentId);
+
+  //  Algorithm to get who a user is replying to
+  let replyingTo;
+  if (replyId) {
+    for (let index = 0; index < ctx.comments?.length; index++) {
+      let replyingToItem = ctx.comments[index].replies.find(
+        (reply) => reply.id === replyId
+      );
+      replyingTo = replyingToItem?.replyingTo;
+    }
+  } else {
+    let replyingToItem = ctx.comments.find((item) => item.id === parentId);
+    replyingTo = replyingToItem?.user?.username;
+  }
+
   const commentData = {
     id: uuidv4(),
     content: text,
     createdAt: <TimeAgo date={new Date()} />,
-    // createdAt: "1 month ago",
     score: 12,
     user: {
       image: ctx.currentUser.image,
@@ -31,6 +47,7 @@ const CommentForm = ({ parentId, ...props }) => {
     content: text,
     createdAt: <TimeAgo date={new Date()} />,
     score: 0,
+    replyingTo: replyingTo,
     user: {
       image: ctx.currentUser.image,
       username: username,

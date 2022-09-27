@@ -70,6 +70,15 @@ const List = ({ list, replyId, parentId, name }) => {
     setOpenReplyForm((current) => !current);
   };
 
+  // Set Replying To
+  console.log(list);
+  let replyingTo = null;
+  if (list?.replyingTo) {
+    replyingTo = `@${list.replyingTo} `;
+  }
+
+  console.log(replyingTo);
+
   return (
     <div>
       <DeleteModal onShow={isOpen} onHide={onClose} onDelete={deleteHandler} />
@@ -109,7 +118,10 @@ const List = ({ list, replyId, parentId, name }) => {
             <main className={classes.mainContainer}>
               {/* Change this paragraph to an input element when edit button is clicked */}
               {!isEditing && (
-                <p className={classes.commentBody}>{list.content}</p>
+                <>
+                  <p className={classes.replyingTo}>{replyingTo}</p>
+                  <p className={classes.content}>{list.content}</p>
+                </>
               )}
               {username === "juliusomo" && isEditing && (
                 <TextArea
@@ -166,6 +178,7 @@ const List = ({ list, replyId, parentId, name }) => {
           parentId={parentId}
           image={image}
           username={username}
+          replyId={replyId}
         />
       )}
     </div>
