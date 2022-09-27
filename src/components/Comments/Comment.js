@@ -3,7 +3,7 @@ import List from "../List";
 import CommentContext from "../../store/comment-context";
 import classes from "./Comment.module.css";
 
-const Comment = ({ data }) => {
+const Comment = () => {
   const ctx = useContext(CommentContext);
 
   return (

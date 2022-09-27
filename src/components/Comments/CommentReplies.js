@@ -1,7 +1,7 @@
 import classes from "./Comment.module.css";
 import List from "../List";
 
-const CommentReplies = ({ data, parentId, item, reply }) => {
+const CommentReplies = ({ parentId, reply }) => {
   return (
     <div>
       <div className={classes.replyBox}>

@@ -56,6 +56,9 @@
   padding: 0 0 0 12px;
   margin: auto auto 12px auto;
 }
+.edit {
+  margin-right: 5px;
+}
 .counter {
   margin-top: 14px;
 }

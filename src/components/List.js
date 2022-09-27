@@ -42,11 +42,9 @@ const List = ({ list, replyId, parentId, name }) => {
     comments.find((item) => {
       if (item.id === replyId) {
         retrievedItemToEdit = item;
-        console.log("it is from here");
       } else {
         retrievedItemToEdit = item.replies.find((item) => item.id === replyId);
       }
-      console.log("Withdraw", retrievedItemToEdit);
       return retrievedItemToEdit;
     });
 
@@ -71,13 +69,10 @@ const List = ({ list, replyId, parentId, name }) => {
   };
 
   // Set Replying To
-  console.log(list);
   let replyingTo = null;
   if (list?.replyingTo) {
     replyingTo = `@${list.replyingTo} `;
   }
-
-  console.log(replyingTo);
 
   return (
     <div>
@@ -159,7 +154,7 @@ const List = ({ list, replyId, parentId, name }) => {
                 {name === "reply" && (
                   <div className={classes.replyGroup} onClick={editHandler}>
                     <button className={classes.replyButton}>
-                      <span className={classes.reply}>
+                      <span className={classes.edit}>
                         <EditIcon />
                       </span>
                       Edit

@@ -5,25 +5,20 @@ import TimeAgo from "timeago-react";
 import classes from "./CommentForm.module.css";
 import CommentContext from "../store/comment-context";
 
-// TimeAgo.addDefaultLocale(en);
-
 const CommentForm = ({ parentId, replyId, ...props }) => {
   const [text, setText] = useState("");
   const ctx = useContext(CommentContext);
   let image = ctx.currentUser.image.png;
   let username = ctx.currentUser.username;
 
-  console.log("replyingTo", replyId);
-  console.log("replyingTo", parentId);
-
-  //  Algorithm to get who a user is replying to
+  //  Logic to get who a user is replying to
   let replyingTo;
   if (replyId) {
     for (let index = 0; index < ctx.comments?.length; index++) {
       let replyingToItem = ctx.comments[index].replies.find(
         (reply) => reply.id === replyId
       );
-      replyingTo = replyingToItem?.replyingTo;
+      replyingTo = replyingToItem?.user?.username;
     }
   } else {
     let replyingToItem = ctx.comments.find((item) => item.id === parentId);

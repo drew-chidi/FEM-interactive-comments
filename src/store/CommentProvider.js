@@ -55,20 +55,14 @@ const commentReducer = (state, action) => {
     }
     case "EDIT": {
       let id = action.item.id;
-      let oldContent;
-      let editedContent = action.item;
-      console.log("Edit Context", oldContent);
+      let editedContent;
       state.comments.find((item) => {
         if (item.id === id) {
-          oldContent = item;
-          console.log("Edit", "it is in comments");
+          editedContent = item;
         } else {
-          console.log("Edit", "it is in replies");
-
-          oldContent = item.replies.find((reply) => reply.id === id);
+          editedContent = item.replies.find((reply) => reply.id === id);
         }
-        console.log("edited context", editedContent);
-        return oldContent;
+        return editedContent;
       });
       return {
         currentUser: state.currentUser,
@@ -76,8 +70,6 @@ const commentReducer = (state, action) => {
       };
     }
     default: {
-      // console.log(action);
-      // throw Error("Unknown action: " + action.type);
     }
   }
 };
