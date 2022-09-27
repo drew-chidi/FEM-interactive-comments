@@ -24,6 +24,9 @@
   padding: 10px 22px;
   border-radius: 8px;
 }
+.button:hover {
+  opacity: 0.5;
+}
 @media (min-width: 768px) {
   .container {
     display: flex;

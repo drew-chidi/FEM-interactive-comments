@@ -46,6 +46,10 @@
   justify-content: flex-end;
 }
 
+.replyGroup:hover {
+  opacity: 0.5;
+}
+
 .replyGroup > * {
   margin-left: 10px;
   background-color: white;
