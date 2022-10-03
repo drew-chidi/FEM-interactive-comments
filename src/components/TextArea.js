@@ -31,6 +31,7 @@ const TextArea = ({ content, retrievedItemToEdit, ...props }) => {
         placeholder='Add a comment...'
         value={editValue}
         onChange={editChangeHandler}
+        required
       />
       <Button label={props.submitLabel} onUpdate={editUpdateHandler} />
     </>
