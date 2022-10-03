@@ -73,6 +73,7 @@ const CommentForm = ({ parentId, replyId, ...props }) => {
             placeholder='Add a comment...'
             onChange={(e) => setText(e.target.value)}
             value={text}
+            required
           />
         </div>
         <div className={classes.buttonAvatar}>
